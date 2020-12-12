@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>GunStore</title>
+</head>
+<body>
+<h1>AjaxCall</h1>
+
+    <script type="text/javascript" >
+        $(document).ready(function () {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "JSON/MyList.json", true);   
+            xhr.setRequestHeader("Content-type", "application/json", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var data = JSON.parse(xhr.response);
+                    $('#results').html(data.user);
+                        }
+            }
+            xhr.send(null);
+            $('#results').html("Working...........");
+        });     
+    </script>
+    <div id="results"></div>
+</body>
+</html>
